@@ -36,3 +36,17 @@ function operator(x, y, op) {
             console.log('Operation not available');
     }
 }
+
+let display = document.querySelector('#display');
+let buttons = document.getElementsByTagName('button');
+for(let i = 0; i < buttons.length; i++) {
+    if(buttons[i].textContent == 'C') {
+        buttons[i].addEventListener('click', () => {
+            display.value = '';
+        })
+    } else {
+        buttons[i].addEventListener('click', () => {
+            display.value += buttons[i].textContent;
+        })
+    }
+}
