@@ -42,6 +42,9 @@ for(let i = 0; i < buttons.length; i++) {
     if(buttons[i].textContent == 'C') {
         buttons[i].addEventListener('click', () => {
             display.value = '';
+            num1 = 0;
+            num2 = 0;
+            op = '';
         })
     } else if(buttons[i].textContent == '+' || buttons[i].textContent == '-' || buttons[i].textContent == 'x' || buttons[i].textContent == '/') {
         buttons[i].addEventListener('click', () => {
