@@ -19,30 +19,42 @@ function divide(x, y) {
 }
 
 function operator(x, y, op) {
-    switch(op) {
-        case '+':
-            add(x, y);
-            break;
-        case '-':
-            subtract(x, y);
-            break;
-        case '*':
-            multiply(x, y);
-            break;
-        case '/':
-            divide(x, y);
-            break;
-        default:
-            console.log('Operation not available');
+    if(op == '+') {
+        return add(x, y);
+    } else if(op == '-') {
+        return subtract(x, y);
+    } else if(op == 'x') {
+        return multiply(x, y);
+    } else if(op == '/') {
+        return divide(x, y);
+    } else {
+        return 'ERROR: Operation not available';
     }
 }
 
 let display = document.querySelector('#display');
-let buttons = document.getElementsByTagName('button');
+let buttons = document.getElementsByTagName('button'); //Returns a collection(kinda like an array)
+let num1;
+let num2;
+let op;
+
 for(let i = 0; i < buttons.length; i++) {
     if(buttons[i].textContent == 'C') {
         buttons[i].addEventListener('click', () => {
             display.value = '';
+        })
+    } else if(buttons[i].textContent == '+' || buttons[i].textContent == '-' || buttons[i].textContent == 'x' || buttons[i].textContent == '/') {
+        buttons[i].addEventListener('click', () => {
+            num1 = display.value;
+            op = buttons[i].textContent;
+            display.value = '';
+        })
+    } else if(buttons[i].textContent == '=') {
+        buttons[i].addEventListener('click', () => {
+            num2 = display.value;
+            num1 = Number(num1);
+            num2 = Number(num2);
+            display.value = operator(num1, num2, op);
         })
     } else {
         buttons[i].addEventListener('click', () => {
